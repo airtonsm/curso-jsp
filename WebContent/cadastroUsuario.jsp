@@ -6,24 +6,42 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Cadastro Usuário</title>
+<link rel="stylesheet"  href="./resources/css/cadastro.css" >
+<style></style>
 </head>
 <body>	
 
 <h1>Cadastro de usuário</h1>
 
+
 	<form action="salvarUsuario" method="post">	
-	
-		Código:
-		<input type="text" readonly="readonly" id="id" name="id" value="${user.id}">
-		<br/>
-		Login:
-		<input type="text" id="login" name="login" value="${user.login}">
-		<br/>
-		Senha:
-		<input type="password" id="senha" name="senha" value="${user.senha }">
-		<br/>
-		<input type="submit" value="Salvar">		
+	<ul class="form-style-1">	<li>	
+	<table>	
+		<tr>
+			<td>Código:</td>
+			<td><input type="text" readonly="readonly" id="id" name="id" value="${user.id}" class="field-long"></td>
+		</tr>	
+			
+		<tr>
+			<td>Login:</td>
+			<td><input type="text" id="login" name="login" value="${user.login}"></td>
+		</tr>	
+			
+		<tr>		
+			<td>Senha:</td>
+			<td><input type="password" id="senha" name="senha" value="${user.senha}"></td>
+		</tr>						
+		</table>
+		
+		<input type="submit" value="Salvar">
+			
+		</li>	
+		</ul>		
 	</form>
+	
+	
+	
+	
 	
 	<table>
 	 <c:forEach items="${usuarios}" var="user">
