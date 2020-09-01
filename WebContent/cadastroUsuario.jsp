@@ -4,15 +4,19 @@ prefix="c"%>
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="ISO-8859-1" />
-    <title>Cadastro Usu�rio</title>
+    <meta charset="UTF-8" />
+    <title>Cadastro Usuário</title>
     <link rel="stylesheet" href="./resources/css/cadastro.css" />
   </head>
   <body>
-    <h1>Cadastro de usu�rio</h1>
+    <h1>Cadastro de usuário</h1>
 
     <form>
       <ul class="form-style-1">
+        <li>
+          <label>Código <span class="required">*</span></label>
+          <input type="text" name="field3" class="field-long" />
+        </li>
         <li>
           <label>Email <span class="required">*</span></label>
           <input type="email" name="field3" class="field-long" />

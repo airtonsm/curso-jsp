@@ -10,7 +10,7 @@ prefix="c"%>
     <link rel="stylesheet" href="./resources/css/estilo.css" />
   </head>
   <body>
-    <h1>P�gina index</h1>
+    <h1>Página index</h1>
 
     <div class="login-page">
       <div class="form">
