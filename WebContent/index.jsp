@@ -11,7 +11,7 @@
 </head>
 <body>
 
-	<h1>Página index</h1>
+	<h1>Página De Login</h1>
 
 	<div class="login-page">
 		<div class="form">
