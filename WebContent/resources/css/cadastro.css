@@ -19,6 +19,7 @@
 	font-weight: bold;
 }
 .form-style-1 input[type=text], 
+.form-style-1 input[type=password], 
 .form-style-1 input[type=date],
 .form-style-1 input[type=datetime],
 .form-style-1 input[type=number],
@@ -41,6 +42,7 @@ select{
 	outline: none;	
 }
 .form-style-1 input[type=text]:focus, 
+.form-style-1 input[type=password]:focus,
 .form-style-1 input[type=date]:focus,
 .form-style-1 input[type=datetime]:focus,
 .form-style-1 input[type=number]:focus,
@@ -83,3 +85,59 @@ select{
 .form-style-1 .required{
 	color:red;
 }
+
+.container {
+  margin: 5% 3%;
+  
+  @media (min-width: $bp-bart) {
+    margin: 2%; 
+  }
+  
+  @media (min-width: $bp-homer) {
+    margin: 2em auto;
+    max-width: $bp-homer;
+  }
+}
+
+.responsive-table {
+  width: 100%;
+  margin-bottom: 1.5em;
+  border-spacing: 0;
+  
+  @media (min-width: $bp-bart) {
+    font-size: .9em; 
+  }
+  
+  @media (min-width: $bp-marge) {
+    font-size: 1em; 
+  }
+  
+  .thead {
+    position: absolute;
+    clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+    padding: 0;
+    border: 0;
+    height: 1px; 
+    width: 1px; 
+    overflow: hidden;
+    
+    @media (min-width: $bp-bart) {
+      position: relative;
+      clip: auto;
+      height: auto;
+      width: auto;
+      overflow: auto;
+    }
+    
+    th {
+      background-color: rgba(29,150,178,1);
+      border: 1px solid rgba(29,150,178,1);
+      font-weight: normal;
+      text-align: center;
+      color: white;
+      
+      &:first-of-type {
+        text-align: left; 
+      }
+    }
+  }
