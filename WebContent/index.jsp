@@ -4,7 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
-<<<<<<< HEAD
+
   <head>
     <meta charset="ISO-8859-1" />
     <meta charset="UTF-8" />
@@ -12,8 +12,8 @@
     <link rel="stylesheet" href="./resources/css/estilo.css" />
   </head>
   <body>
-    <h1>PÃ¡gina index</h1>
-=======
+    <h1>Página index</h1>
+
 <head>
 <meta charset="ISO-8859-1">
 <title>Curso JSP</title>
@@ -22,7 +22,7 @@
 <body>
 
 	<h1>Página index</h1>
->>>>>>> parent of b81f71e... CorreÃ§Ã£o de rotas
+
 
 	<div class="login-page">
 		<div class="form">
