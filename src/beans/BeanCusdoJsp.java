@@ -8,16 +8,16 @@ public class BeanCusdoJsp {
 		
 		private String senha;
 		
-		public boolean validarLoginSenha(String login, String senha) {
-			if(login.equalsIgnoreCase("admin") && senha.equalsIgnoreCase("admin")) {
-				return true;				
-			}else {
-				return false;
-			}		
-			
-		}		
-		
+		private String nome;
 
+		public void setNome(String nome) {
+			this.nome = nome;
+		}
+
+		public String getNome() {
+			return nome;
+		}
+		
 		public Long getId() {
 			return id;
 		}
@@ -39,11 +39,7 @@ public class BeanCusdoJsp {
 
 		public void setSenha(String senha) {
 			this.senha = senha;
-		}
-
-
-
-		
+		}	
 		
 
 

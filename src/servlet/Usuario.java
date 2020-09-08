@@ -2,7 +2,6 @@ package servlet;
 
 import java.io.IOException;
 
-import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -27,7 +26,7 @@ public class Usuario extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		response.getWriter().append("Served at: ").append(request.getContextPath());		
 		
 		try {
 		String acao = request.getParameter("acao");		
@@ -47,6 +46,11 @@ public class Usuario extends HttpServlet {
 			request.setAttribute("user", beanCusdoJsp);
 			view.forward(request, response);
 			
+		}else if(acao.equalsIgnoreCase("listartodos")) {
+			
+			RequestDispatcher view = request.getRequestDispatcher("cadastroUsuario.jsp");
+			request.setAttribute("usuarios", daoUsuario.listar());
+			view.forward(request, response);
 		}
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -57,15 +61,31 @@ public class Usuario extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		String acao = request.getParameter("acao");
+		
+		if(acao != null && acao.equalsIgnoreCase("reset")) {
+			
+			try {
+				RequestDispatcher view = request.getRequestDispatcher("cadastroUsuario.jsp");
+				request.setAttribute("usuarios", daoUsuario.listar());
+				view.forward(request, response);
+				}catch (Exception e) {
+					e.printStackTrace();
+				}
+			
+		}else {
+		
 		String id = request.getParameter("id");		
 		String login = request.getParameter("login");		
 		String senha = request.getParameter("senha");
+		String nome = request.getParameter("nome");
 		
 		BeanCusdoJsp usuario = new BeanCusdoJsp();
 		
 		usuario.setId(!id.isEmpty()? Long.parseLong(id) : 0);
 		usuario.setLogin(login);
 		usuario.setSenha(senha);
+		usuario.setNome(nome);
 		
 		if(id == null || id.isEmpty()) {
 			daoUsuario.salvar(usuario);
@@ -81,6 +101,7 @@ public class Usuario extends HttpServlet {
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
 	}
 
 }
