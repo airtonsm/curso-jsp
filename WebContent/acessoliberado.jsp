@@ -9,7 +9,7 @@
 <body>
 <h2>Seja bem vindo ao seu sistema em JSP</h2>
 
-	<a href = "salvarUsuario?acao=listartodos">Cadastro Usuário</a>
+	<a href = "salvarUsuario?acao=listartodos"><img src="resources/img/usuario.jpg" alt="Usuario" title="Usuario" width="150px" legth="150px"></a>
 	
 	
 </body>

@@ -21,11 +21,12 @@ public class DaoUsuario {
 	public void salvar(BeanCusdoJsp usuario) {
 		
 		try {
-		String sql = "insert into usuario(login, senha, nome) values (?, ?, ?)";
+		String sql = "insert into usuario(login, senha, nome, telefone) values (?, ?, ?, ?)";
 		PreparedStatement insert = connection.prepareStatement(sql);
 		insert.setString(1, usuario.getLogin());
 		insert.setString(2, usuario.getSenha());
 		insert.setString(3, usuario.getNome());
+		insert.setString(4, usuario.getTelefone());
 		insert.execute();
 		connection.commit();
 		
@@ -53,6 +54,7 @@ public class DaoUsuario {
 			beanCusdoJsp.setLogin(resultSet.getString("login"));
 			beanCusdoJsp.setSenha(resultSet.getString("senha"));
 			beanCusdoJsp.setNome(resultSet.getString("nome"));
+			beanCusdoJsp.setTelefone(resultSet.getString("telefone"));
 			
 			listar.add(beanCusdoJsp);
 		}
@@ -90,22 +92,52 @@ public class DaoUsuario {
 			beanCusdoJsp.setLogin(resultSet.getString("login"));
 			beanCusdoJsp.setSenha(resultSet.getString("senha"));
 			beanCusdoJsp.setNome(resultSet.getString("nome"));
+			beanCusdoJsp.setTelefone(resultSet.getString("telefone"));
 			
 			return beanCusdoJsp;
 		}
 		return null;
 	}
+	
+	public boolean validarLogin(String login) throws Exception{
+		String sql = "select count(1) as qtd from usuario where login  = '" + login + "'";
+		
+		PreparedStatement preparedStatement = connection.prepareStatement(sql);
+		ResultSet resultSet =  preparedStatement.executeQuery();
+		
+		if(resultSet.next()) {					
+			
+			return resultSet.getInt("qtd") <=0;
+		}
+		
+		return false;
+	}
+	
+	public boolean validarLoginUpdate(String login, String id) throws Exception{
+		String sql = "select count(1) as qtd from usuario where login  = '" + login + "' and id <> " + id;
+		
+		PreparedStatement preparedStatement = connection.prepareStatement(sql);
+		ResultSet resultSet =  preparedStatement.executeQuery();
+		
+		if(resultSet.next()) {					
+			
+			return resultSet.getInt("qtd") <=0;
+		}
+		
+		return false;
+	}
 
 	public void atualizar(BeanCusdoJsp usuario) {
 		
 		
-		String sql = "update usuario set login = ?, senha = ?, nome = ?" + "where id =" +  usuario.getId();
+		String sql = "update usuario set login = ?, senha = ?, nome = ?, telefone = ? where id =" +  usuario.getId();
 		
 		try {
 		PreparedStatement statement = connection.prepareStatement(sql);		
 		statement.setString(1, usuario.getLogin());
 		statement.setString(2, usuario.getSenha());
 		statement.setString(3, usuario.getNome());
+		statement.setString(4, usuario.getTelefone());
 		statement.executeUpdate();
 		connection.commit();
 		}catch (Exception e) {
@@ -115,9 +147,7 @@ public class DaoUsuario {
 			} catch (SQLException e1) {
 				e1.printStackTrace();
 			}
-		}
-		
-		
+		}		
 		
 	}
 

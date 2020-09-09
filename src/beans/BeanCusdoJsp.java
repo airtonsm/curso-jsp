@@ -9,6 +9,16 @@ public class BeanCusdoJsp {
 		private String senha;
 		
 		private String nome;
+		
+		private String telefone;
+		
+		public void setTelefone(String telefone) {
+			this.telefone = telefone;
+		}
+		
+		public String getTelefone() {
+			return telefone;
+		}
 
 		public void setNome(String nome) {
 			this.nome = nome;
