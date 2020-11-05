@@ -88,28 +88,26 @@ public class Usuario extends HttpServlet {
 			usuario.setTelefone(telefone);
 
 			try {
-				
-				if(id == null || id.isEmpty() && !daoUsuario.validarLogin(login)) {
+
+				if (id == null || id.isEmpty() && !daoUsuario.validarLogin(login)) {
 					request.setAttribute("msg", "Login já cadastradato!!");
 				}
-
-				if (id == null || id.isEmpty() && daoUsuario.validarLogin(login)) {					
+				if (id == null || id.isEmpty() && daoUsuario.validarLogin(login)) {
 					daoUsuario.salvar(usuario);
 					request.setAttribute("msg", "Usuário cadastrado com sucesso!!!");
-					
-					
-				} else if (id != null || !id.isEmpty()) { 
-					if(!daoUsuario.validarLoginUpdate(login, id)) {
+
+				} else if (id != null || !id.isEmpty()) {
+					if (!daoUsuario.validarLoginUpdate(login, id)) {
 						request.setAttribute("msg", "Login já  cadastrado para outro usuario");
-					}
-					else {
-					daoUsuario.atualizar(usuario);
+					} else {
+						daoUsuario.atualizar(usuario);
 					}
 				}
 
 				RequestDispatcher view = request.getRequestDispatcher("cadastroUsuario.jsp");
 				request.setAttribute("usuarios", daoUsuario.listar());
 				view.forward(request, response);
+				
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

@@ -85,8 +85,12 @@
 			<td style = "width: 150px"><c:out  value=" ${user.nome}"/></td>
 			<td style = "width: 150px"><c:out  value=" ${user.telefone}"/></td>
 
-			<td><a href="salvarUsuario?acao=delete&user=${user.id}"><img src= "resources/img/excluir.png" alt="Excluir" title="Excluir" width="20px" legth="20px"></a></td>
-			<td><a href="salvarUsuario?acao=editar&user=${user.id}"><img src= "resources/img/editar.png" alt="Editar" title="Editar" width="20px" legth="20px"></a></td>
+			<td><a href="salvarUsuario?acao=delete&user=${user.id}"><img 
+			src= "resources/img/excluir.png" alt="Excluir" title="Excluir" width="20px" legth="20px"></a>
+			</td>
+			<td><a href="salvarUsuario?acao=editar&user=${user.id}">
+			<img src= "resources/img/editar.png" alt="Editar" title="Editar" width="20px" legth="20px">
+			</a></td>
 		
 		</tr>
 	</c:forEach>	

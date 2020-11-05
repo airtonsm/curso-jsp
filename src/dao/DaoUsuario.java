@@ -105,6 +105,20 @@ public class DaoUsuario {
 		PreparedStatement preparedStatement = connection.prepareStatement(sql);
 		ResultSet resultSet =  preparedStatement.executeQuery();
 		
+		if(resultSet.next()) {	
+			
+			return resultSet.getInt("qtd") <=0;
+		}
+		
+		return false;
+	}
+	
+	public boolean validarSenha(String senha) throws Exception{
+		String sql = "select count(1) as qtd from usuario where senha = '" + senha + "'";
+		
+		PreparedStatement preparedStatement = connection.prepareStatement(sql);
+		ResultSet resultSet =  preparedStatement.executeQuery();
+		
 		if(resultSet.next()) {					
 			
 			return resultSet.getInt("qtd") <=0;
@@ -126,6 +140,7 @@ public class DaoUsuario {
 		
 		return false;
 	}
+
 
 	public void atualizar(BeanCusdoJsp usuario) {
 		
